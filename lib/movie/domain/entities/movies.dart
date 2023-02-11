@@ -4,7 +4,7 @@ class Movie extends Equatable{
   final int id;
   final String title ;
   final String backdropPath;
-  final List<int> genderIds ;
+  final List<int> genreIds ;
   final String overview;
   final double voteAverage;
   final double releaseDate;
@@ -13,7 +13,7 @@ class Movie extends Equatable{
       required this.id,
       required this.title,
       required this.backdropPath,
-      required this.genderIds,
+      required this.genreIds,
       required this.overview,
       required this.voteAverage,
    required this.releaseDate,
@@ -24,7 +24,7 @@ class Movie extends Equatable{
     id,
     title,
     backdropPath,
-    genderIds,
+    genreIds,
     overview,
     voteAverage,
     releaseDate,
