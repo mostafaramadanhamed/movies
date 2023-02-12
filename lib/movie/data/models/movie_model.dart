@@ -17,6 +17,7 @@ class MovieModel extends Movie {
         backdropPath: json['backdrop_path'],
         genreIds: List<int>.from(json['genre_ids'].map((e) => e)),
         overview: json['overview'],
+        // todo int is not subtype of double
         voteAverage: json['vote_average'],
         releaseDate: json['release_date'],
       );
