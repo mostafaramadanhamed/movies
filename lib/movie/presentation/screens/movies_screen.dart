@@ -1,22 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MoviesScreen extends StatefulWidget {
+class MoviesScreen extends StatelessWidget {
   const MoviesScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MoviesScreen> createState() => _MoviesScreenState();
-}
-
-class _MoviesScreenState extends State<MoviesScreen> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
   }
 }
