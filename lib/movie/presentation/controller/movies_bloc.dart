@@ -4,22 +4,22 @@ import 'package:movies/movie/presentation/controller/movies_event.dart';
 import 'package:movies/movie/presentation/controller/movies_states.dart';
 import '../../domain/usecases/get_now_playing_movies.dart';
 
-class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
+class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
-  MoviesBloc(this.getNowPlayingMoviesUseCase) : super(const MoviesStates()) {
+  MoviesBloc(this.getNowPlayingMoviesUseCase) : super(const MoviesState()) {
     on<GetNowPlayingMoviesEvent>((event, emit) async {
 
       final result =
           await getNowPlayingMoviesUseCase.execute();
       result.fold(
         (l) => emit(
-          MoviesStates(
+          MoviesState(
             nowPlayingState: RequestState.error,
             nowPlayingMessage: l.message,
           ),
         ),
         (r) => emit(
-          MoviesStates(
+          MoviesState(
             nowPlayingMovies: r,
             nowPlayingState: RequestState.loaded,
           ),
