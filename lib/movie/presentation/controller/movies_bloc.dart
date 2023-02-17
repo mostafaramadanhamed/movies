@@ -19,13 +19,13 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       final result = await getNowPlayingMoviesUseCase.execute();
       result.fold(
         (l) => emit(
-          MoviesState(
+          state.copyWith(
             nowPlayingState: RequestState.error,
             nowPlayingMessage: l.message,
           ),
         ),
         (r) => emit(
-          MoviesState(
+          state.copyWith(
             nowPlayingMovies: r,
             nowPlayingState: RequestState.loaded,
           ),
@@ -35,14 +35,14 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     on<GetPopularMoviesEvent>((event, emit) async {
       final result = await getPopularMoviesUseCase.execute();
       result.fold(
-            (l) => emit(
-          MoviesState(
+        (l) => emit(
+          state.copyWith(
             popularState: RequestState.error,
             popularMessage: l.message,
           ),
         ),
-            (r) => emit(
-          MoviesState(
+        (r) => emit(
+          state.copyWith(
             popularMovies: r,
             popularState: RequestState.loaded,
           ),
@@ -52,14 +52,14 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     on<GetTopRatedMoviesEvent>((event, emit) async {
       final result = await getTopRatedMoviesUseCase.execute();
       result.fold(
-            (l) => emit(
-          MoviesState(
+        (l) => emit(
+          state.copyWith(
             topRatedState: RequestState.error,
             topRatedMessage: l.message,
           ),
         ),
-            (r) => emit(
-          MoviesState(
+        (r) => emit(
+          state.copyWith(
             topRatedMovies: r,
             topRatedState: RequestState.loaded,
           ),

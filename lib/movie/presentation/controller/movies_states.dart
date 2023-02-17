@@ -26,6 +26,35 @@ class MoviesState extends Equatable {
     this.nowPlayingState = RequestState.loading,
     this.nowPlayingMessage = '',
   });
+
+  MoviesState copyWith({
+     List<Movie> ?nowPlayingMovies,
+     RequestState ?nowPlayingState,
+     String ?nowPlayingMessage,
+     List<Movie>? popularMovies,
+     RequestState? popularState,
+     String? popularMessage,
+     List<Movie>? topRatedMovies,
+     RequestState? topRatedState,
+     String? topRatedMessage,
+}){
+    return MoviesState(
+      //now playing
+      nowPlayingMovies: nowPlayingMovies??this.nowPlayingMovies,
+      nowPlayingState: nowPlayingState??this.nowPlayingState,
+      nowPlayingMessage: nowPlayingMessage??this.nowPlayingMessage,
+      //popular
+      popularMovies: popularMovies??this.popularMovies,
+      popularState: popularState??this.popularState,
+      popularMessage: popularMessage??this.popularMessage,
+      //top rated
+      topRatedMovies: topRatedMovies??this.topRatedMovies,
+      topRatedState: topRatedState??this.topRatedState,
+      topRatedMessage: topRatedMessage??this.topRatedMessage,
+
+    );
+  }
+
   @override
   List<Object?> get props => [
         nowPlayingMovies,

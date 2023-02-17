@@ -27,9 +27,9 @@ class TopRatedWidget extends StatelessWidget {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              itemCount: moviesList.length,
+              itemCount: state.topRatedMovies.length,
               itemBuilder: (context, index) {
-                final movie = moviesList[index];
+                final movie = state.topRatedMovies[index];
                 return Container(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: InkWell(
