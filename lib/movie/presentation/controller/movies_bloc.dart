@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/core/utils/enums.dart';
 import 'package:movies/movie/domain/usecases/get_popular_movies.dart';
@@ -15,56 +16,64 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     this.getPopularMoviesUseCase,
     this.getTopRatedMoviesUseCase,
   ) : super(const MoviesState()) {
-    on<GetNowPlayingMoviesEvent>((event, emit) async {
-      final result = await getNowPlayingMoviesUseCase.execute();
-      result.fold(
-        (l) => emit(
-          state.copyWith(
-            nowPlayingState: RequestState.error,
-            nowPlayingMessage: l.message,
-          ),
-        ),
-        (r) => emit(
-          state.copyWith(
-            nowPlayingMovies: r,
-            nowPlayingState: RequestState.loaded,
-          ),
-        ),
-      );
-    });
-    on<GetPopularMoviesEvent>((event, emit) async {
-      final result = await getPopularMoviesUseCase.execute();
-      result.fold(
-        (l) => emit(
-          state.copyWith(
-            popularState: RequestState.error,
-            popularMessage: l.message,
-          ),
-        ),
-        (r) => emit(
-          state.copyWith(
-            popularMovies: r,
-            popularState: RequestState.loaded,
-          ),
-        ),
-      );
-    });
-    on<GetTopRatedMoviesEvent>((event, emit) async {
-      final result = await getTopRatedMoviesUseCase.execute();
-      result.fold(
-        (l) => emit(
-          state.copyWith(
-            topRatedState: RequestState.error,
-            topRatedMessage: l.message,
-          ),
-        ),
-        (r) => emit(
-          state.copyWith(
-            topRatedMovies: r,
-            topRatedState: RequestState.loaded,
-          ),
-        ),
-      );
-    });
+    on<GetNowPlayingMoviesEvent>(_getNowPlayingMovies);
+    on<GetPopularMoviesEvent>(_getPopularMovies);
+    on<GetTopRatedMoviesEvent>(_getTopRated);
   }
+
+  FutureOr<void> _getTopRated(event, emit) async {
+    final result = await getTopRatedMoviesUseCase.execute();
+    result.fold(
+      (l) => emit(
+        state.copyWith(
+          topRatedState: RequestState.error,
+          topRatedMessage: l.message,
+        ),
+      ),
+      (r) => emit(
+        state.copyWith(
+          topRatedMovies: r,
+          topRatedState: RequestState.loaded,
+        ),
+      ),
+    );
+  }
+
+  FutureOr<void> _getPopularMovies(event, emit) async {
+    final result = await getPopularMoviesUseCase.execute();
+    result.fold(
+      (l) => emit(
+        state.copyWith(
+          popularState: RequestState.error,
+          popularMessage: l.message,
+        ),
+      ),
+      (r) => emit(
+        state.copyWith(
+          popularMovies: r,
+          popularState: RequestState.loaded,
+        ),
+      ),
+    );
+  }
+
+  FutureOr<void> _getNowPlayingMovies(event, emit) async {
+    final result = await getNowPlayingMoviesUseCase.execute();
+    result.fold(
+      (l) => emit(
+        state.copyWith(
+          nowPlayingState: RequestState.error,
+          nowPlayingMessage: l.message,
+        ),
+      ),
+      (r) => emit(
+        state.copyWith(
+          nowPlayingMovies: r,
+          nowPlayingState: RequestState.loaded,
+        ),
+      ),
+    );
+  }
+
+
 }

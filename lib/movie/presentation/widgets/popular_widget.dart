@@ -3,9 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../core/network/api_constant.dart';
-import '../../../core/utils/dummy.dart';
 import '../controller/movies_bloc.dart';
 import '../controller/movies_states.dart';
 
@@ -17,7 +15,9 @@ class PopularWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
+      buildWhen: (previous,current)=>previous.popularState !=current.popularState,
       builder: (context, state) {
+        print('popular');
         return FadeIn(
           duration: const Duration(milliseconds: 500),
           child: SizedBox(
