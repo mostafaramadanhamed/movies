@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:movies/movie/domain/entities/genres.dart';
 
 class MovieDetail extends Equatable {
   final String backdropPath;
@@ -8,8 +9,8 @@ class MovieDetail extends Equatable {
   final int runtime;
   final String title;
   final String voteAverage;
-
-  const MovieDetail({
+  final List< Genres>genres;
+  const MovieDetail( {
     required this.backdropPath,
     required this.id,
     required this.overview,
@@ -17,6 +18,7 @@ class MovieDetail extends Equatable {
     required this.runtime,
     required this.title,
     required this.voteAverage,
+    required this.genres,
   });
 
   @override
@@ -28,6 +30,6 @@ class MovieDetail extends Equatable {
         runtime,
         title,
     voteAverage,
-
+    genres,
       ];
 }
