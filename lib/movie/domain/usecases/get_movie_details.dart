@@ -5,13 +5,13 @@ import 'package:movies/core/useCase/base_use_case.dart';
 import 'package:movies/movie/domain/entities/movie_details.dart';
 import 'package:movies/movie/domain/repository/base_movies_repository.dart';
 
-class GetMovieDetailsUseCase extends BaseUseCase<List<MovieDetails>, MovieDetailsParams> {
+class GetMovieDetailsUseCase extends BaseUseCase<MovieDetails, MovieDetailsParams> {
   final BaseMoviesRepository baseMoviesRepository;
 
   GetMovieDetailsUseCase(this.baseMoviesRepository);
 
   @override
-  Future<Either<Failure, List<MovieDetails>>> call(MovieDetailsParams params) async {
+  Future<Either<Failure, MovieDetails>> call(MovieDetailsParams params) async {
     return await baseMoviesRepository.getMovieDetails(params);
   }
 

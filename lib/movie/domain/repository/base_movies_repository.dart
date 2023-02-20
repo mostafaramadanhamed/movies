@@ -10,5 +10,5 @@ abstract class BaseMoviesRepository{
   Future<Either< Failure ,List<Movie>>>getNowPlayingMovies();
   Future<Either< Failure ,List<Movie>>>getPopularMovies();
   Future<Either< Failure ,List<Movie>>>getTopRatedMovies();
-  Future<Either< Failure ,List<MovieDetails>>>getMovieDetails(MovieDetailsParams params);
+  Future<Either< Failure ,MovieDetails>>getMovieDetails(MovieDetailsParams params);
 }

@@ -4,6 +4,7 @@ import 'package:movies/core/error/failure.dart';
 import 'package:movies/movie/domain/entities/movie_details.dart';
 import 'package:movies/movie/domain/entities/movies.dart';
 import 'package:movies/movie/domain/repository/base_movies_repository.dart';
+import 'package:movies/movie/domain/usecases/get_movie_details.dart';
 
 import '../datasource/movie_remote_datasource.dart';
 
@@ -45,7 +46,7 @@ class MoviesRepository extends BaseMoviesRepository {
   }
 
   @override
-  Future<Either<Failure, MovieDetails>> getMovieDetails(int params) async{
+  Future<Either<Failure, MovieDetails>> getMovieDetails(MovieDetailsParams params) async{
     final  result= await baseMovieRemoteDataSource.getMovieDetails(params);
     try{
       return Right(result);
