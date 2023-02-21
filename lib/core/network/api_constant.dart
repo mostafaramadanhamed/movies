@@ -7,6 +7,7 @@ class ApiConstance{
   static const  popularMoviesPath='$baseUrl/movie/popular?api_key=$apiKey';
   static const  topRatedMoviesPath='$baseUrl/movie/top_rated?api_key=$apiKey';
   static   movieDetailsPath(int movieId)=>'$baseUrl/movie/$movieId?api_key=$apiKey';
+  static   recommendationPath(int movieId)=>'$baseUrl/movie/$movieId/recommendations?api_key=$apiKey';
 
 
 }
