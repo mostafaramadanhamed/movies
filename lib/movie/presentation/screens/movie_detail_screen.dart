@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../core/network/api_constant.dart';
@@ -84,7 +83,7 @@ class MovieDetailContent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(movie.title,
-                      style: GoogleFonts.poppins(
+                      style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 1.2,
