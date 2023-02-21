@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/core/utils/constant.dart';
 import 'package:movies/movie/presentation/controller/movies_bloc.dart';
 import 'package:movies/movie/presentation/controller/movies_event.dart';
 import '../../../core/services/service_locator.dart';
@@ -32,7 +33,7 @@ class MoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      "Popular",
+                      AppString.popular,
                       style: TextStyle(fontSize: 19,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.15,
@@ -47,7 +48,7 @@ class MoviesScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: const [
-                            Text('See More', style: TextStyle(
+                            Text(AppString.seeMore, style: TextStyle(
                               color: Colors.white,
 
                             ),),
@@ -74,8 +75,7 @@ class MoviesScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "Top Rated",
+                    const Text(AppString.topRated,
                       style: TextStyle(fontSize: 19,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.15,
@@ -90,7 +90,7 @@ class MoviesScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: const [
-                            Text('See More', style: TextStyle(
+                            Text(AppString.seeMore, style: TextStyle(
                               color: Colors.white,
                             ),),
                             Icon(

@@ -18,7 +18,7 @@ class MovieDetailScreen extends StatelessWidget {
     ..add(GetMovieRecommendationEvent(id)),
       lazy: false,
 
-  child: Scaffold(
+  child: const Scaffold(
       body: MovieDetailContent(),
     ),
 );
